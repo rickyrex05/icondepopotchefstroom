@@ -61,6 +61,7 @@ nav {
     font-weight: 600;
 }
 
+/* Desktop: nav links visible */
 .nav-links {
     display: flex;
     gap: 45px;
@@ -81,21 +82,62 @@ nav {
     color: var(--gold);
 }
 
+/* Hamburger button - hidden on desktop */
 .menu-toggle {
     display: none;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 12px;
+    min-width: 48px;
+    min-height: 48px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
 .menu-toggle span {
+    display: block;
     width: 24px;
     height: 2px;
     background: var(--black);
     transition: all 0.3s;
+    pointer-events: none;
+}
+
+/* ==================== */
+/* MOBILE RESPONSIVE    */
+/* ==================== */
+
+@media (max-width: 768px) {
+    /* Show hamburger button */
+    .menu-toggle {
+        display: flex;
+    }
+
+    /* Hide nav links by default on mobile */
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background: rgba(250, 250, 250, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 30px 8%;
+        gap: 25px;
+        border-bottom: 1px solid var(--gray-light);
+        z-index: 99;
+    }
+
+    /* Show nav links when active class is added by JS */
+    .nav-links.active {
+        display: flex;
+    }
 }
 
 /* Hero */
